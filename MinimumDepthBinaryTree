@@ -1,0 +1,40 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+'''
+When left or right node of root is None, min(left, right) + 1 doesn't work anymore, it will become 1 regardless. In the following example. When 3 is root, minDepth from 3 should be 3 (left + right + 1), not 1 (min(left, right) + 1)
+
+    1
+   /  \
+ 2     3
+        \
+		 4
+		  \
+		   5
+we use left + right + 1 to calculate minimum depth.
+'''
+
+class Solution:
+ 
+    
+    def depth(self,node):
+        if(node is None):
+            return 0;
+        left=self.depth(node.left);
+        right=self.depth(node.right);
+        return left + right + 1 if (left == 0 or right == 0) else min(left, right) + 1
+        
+    def minDepth(self, root: TreeNode) -> int:
+        
+        if(not root):
+            return 0;
+        h=self.depth(root);
+        return h;
+    
+    
+            
+        
