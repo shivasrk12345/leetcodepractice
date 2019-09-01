@@ -7,12 +7,14 @@ class Solution:
                 li2 = list(A[j]);
                 #print('list1 is ',li1);
                 #print('list2 is',li2);
+                # inititalizing index list to store the indexes at which two strings are different.
                 indexlist = []
                 for k in range(len(li1)):
                     if(li1[k]!=li2[k]):
                         indexlist.append(k);
                 if(len(indexlist)==2):
                     #print(indexlist)
+                    #swapping the values at two indexes 
                     li2[indexlist[0]],li2[indexlist[1]]=li2[indexlist[1]],li2[indexlist[0]];
                     #print('list2 after modification',li2)
                     if(li1==li2):
