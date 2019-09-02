@@ -1,0 +1,18 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+from collections import defaultdict;
+class Solution:
+    def maxLevelSum(self, root: TreeNode) -> int:
+        def inorder(root,level):
+            if(root):
+                inorder(root.left,level+1);
+                dict[level]+=root.val;
+                inorder(root.right,level+1);
+        dict=defaultdict(int);
+        inorder(root,1);
+        return max(dict.items(),key=lambda x:x[1])[0]
+                
