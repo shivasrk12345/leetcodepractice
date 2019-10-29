@@ -1,0 +1,33 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    
+    def postorder(self,maxlevel,level,root,li):
+        
+        if(root):
+            if(level>maxlevel[0]):
+                li.append(root.val);
+                maxlevel[0]=level;
+            self.postorder(maxlevel,level+1,root.right,li);
+            self.postorder(maxlevel,level+1, root.left,li);
+        return li
+            
+                
+        
+    
+    def rightSideView(self, root: TreeNode) -> List[int]:
+        
+        # to make the values 
+        maxlevel=[0]
+        li=[]
+        
+        result=self.postorder(maxlevel,1,root,li);
+        return result;
+        
+        
+        
